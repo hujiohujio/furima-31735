@@ -65,6 +65,12 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
+      it 'passwordとpassword_confirmationが一致しない登録できない' do
+        @user.password = "ss0010"
+        @user.password_confirmation = "ss0020"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
       it 'last_nameが空だと登録できない' do
         @user.last_name = ''
         @user.valid?
