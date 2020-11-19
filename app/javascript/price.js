@@ -6,8 +6,8 @@ function priceCalc () {
     const profitCalc = (price - tax);
     const addTaxPrice = document.getElementById("add-tax-price");
     const profit = document.getElementById("profit");
-    addTaxPrice.innerHTML = `${tax.toLocaleString()}`;
-    profit.innerHTML = `${profitCalc.toLocaleString()}`;
+    addTaxPrice.innerHTML = `${Math.floor(tax).toLocaleString()}`;
+    profit.innerHTML = `${Math.floor(profitCalc).toLocaleString()}`;
 
   });
 }
