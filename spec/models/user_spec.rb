@@ -50,9 +50,9 @@ describe User do
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
       it 'emailに@がないと登録できない' do
-        @user.email = "tech.email"
+        @user.email = 'tech.email'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'passwordが空だと登録できない' do
         @user.password = ''
@@ -71,8 +71,8 @@ describe User do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
       it 'passwordとpassword_confirmationが一致しない登録できない' do
-        @user.password = "ss0010"
-        @user.password_confirmation = "ss0020"
+        @user.password = 'ss0010'
+        @user.password_confirmation = 'ss0020'
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
