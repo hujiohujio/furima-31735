@@ -1,5 +1,6 @@
 <%= render "shared/header" %>
 <div class='main'>
+
   <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
   <div class='title-contents'>
     <h2 class='service-title'>
@@ -17,6 +18,7 @@
     </div>
   </div>
   <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
+
   <%# FURIMAが選ばれる3つの理由部分 %>
   <div class='select-reason-contents'>
     <h2 class='title'>
@@ -59,6 +61,7 @@
     </ul>
   </div>
   <%# /FURIMAが選ばれる3つの理由部分 %>
+
   <%# 画面中央の「会員数日本一位」帯部分 %>
   <div class='ad-contents'>
     <h2 class='ad-title'>
@@ -79,6 +82,7 @@
     </div>
   </div>
   <%# /画面中央の「会員数日本一位」帯部分 %>
+
   <%# FURIMAの特徴 %>
   <div class='feature-contents'>
     <h2 class='title'>
@@ -115,15 +119,16 @@
     </ul>
   </div>
   <%# /FURIMAの特徴 %>
+
   <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
-      <% if @items.present?%>
+      <% if Item.present?%>
         <% @items.each do |item| %>
           <li class='list'>
-            <%= link_to "#" do %>
+            <%= link_to(item_path(item.id)) do %>
             <div class='item-img-content'>
               <%= image_tag item.image, class: "item-img" %>
               <%# 商品が売れていればsold outを表示しましょう %>
@@ -160,7 +165,7 @@
               <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
                 <span class='star-count'>0</span>
-             </div>
+              </div>
             </div>
           </div>
           <% end %>
@@ -175,6 +180,3 @@
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
 <%= render "shared/footer" %>
-
-
-
