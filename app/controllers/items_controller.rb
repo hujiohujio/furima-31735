@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
+
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -21,7 +22,24 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    unless current_user == @item.user
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
+  end
+
   private
+
   def item_params
     params.require(:item).permit(:name, :product_description, :category_id, :status_id, :shipping_fee_id, :shipping_prefecture_id, :scheduled_delivery_id, :price, :image).merge(user_id: current_user.id)
   end
