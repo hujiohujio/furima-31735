@@ -38,7 +38,9 @@ class ItemsController < ApplicationController
     if current_user == @item.user
       @item.destroy
     end
-      redirect_to root_path
+      
+    redirect_to root_path
+    
   end
 
   private
