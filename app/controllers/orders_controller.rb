@@ -1,7 +1,5 @@
 class OrdersController < ApplicationController
-  def new
-    
-  end
+
   
   def index
    @item = Item.find(params[:item_id])
@@ -10,6 +8,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new(order_address_params)
       if @order_address.valid?
         @order_address.save
@@ -21,7 +20,7 @@ class OrdersController < ApplicationController
 
   private
   def order_address_params
-    params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone).merge(user_id: current_user.id, item_id: @item.id)
   end
 
 
