@@ -35,9 +35,9 @@ RSpec.describe OrderAddress, type: :model do
       expect(@order_address.errors.full_messages).to include("Phone can't be blank")
     end
     it 'phoneが12桁以上の場合保存できない' do
-      @order_address.phone = "000000000000"
+      @order_address.phone = '000000000000'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Phone is invalid")
+      expect(@order_address.errors.full_messages).to include('Phone is invalid')
     end
     it 'tokenが空の場合保存できない' do
       @order_address.token = nil
@@ -46,9 +46,3 @@ RSpec.describe OrderAddress, type: :model do
     end
   end
 end
-
-
-
-
-
-
