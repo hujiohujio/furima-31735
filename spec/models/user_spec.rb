@@ -82,7 +82,7 @@ describe User do
         expect(@user.errors.full_messages).to include("Last name can't be blank")
       end
       it 'last_nameが全角（漢字・ひらがな・カタカナ）ではないと登録できない' do
-        @user.last_name = 'miku'
+        @user.last_name = 'ﾔﾏﾀﾞ'
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name is invalid')
       end
@@ -92,7 +92,7 @@ describe User do
         expect(@user.errors.full_messages).to include("First name can't be blank")
       end
       it 'first_nameが全角（漢字・ひらがな・カタカナ）ではないと登録できない' do
-        @user.first_name = 'tarou'
+        @user.first_name = 'ﾀﾛｳ'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name is invalid')
       end
@@ -101,8 +101,8 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name kana can't be blank")
       end
-      it 'last_name_kanaが全角（カタカナではないと登録できない' do
-        @user.last_name_kana = 'やまだ'
+      it 'last_name_kanaが全角カタカナではないと登録できない' do
+        @user.last_name_kana = 'ﾔﾏﾀﾞ'
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name kana is invalid')
       end
@@ -111,8 +111,8 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank")
       end
-      it 'first_name_kanaが全角（カタカナではないと登録できない' do
-        @user.first_name_kana = 'たろう'
+      it 'first_name_kanaが全角カタカナではないと登録できない' do
+        @user.first_name_kana = 'ﾀﾛｳ'
         @user.valid?
         expect(@user.errors.full_messages).to include('First name kana is invalid')
       end
